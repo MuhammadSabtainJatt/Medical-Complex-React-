@@ -1,0 +1,32 @@
+/* LoginForm.css */
+.main {
+    background-image: url("https://jdm-planet.com/wp-content/uploads/2015/01/Login-background.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    background-color: #fff; /* Set background color to white */
+    text-align: center;
+  }
+  
+  .form h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form Input {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .form Button {
+    width: 100%;
+  }
+  
