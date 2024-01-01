@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
-import {  Form, Input } from 'antd';
+import { Form, Input, message } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
-const initialData={userName:"",email:"" , password:""}
-const RegisterForm = () => {
-  const [data,setData]=useState(initialData)
+import { auth } from '../../../Config/config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-  const handleChange=(e)=>{
-    setData({...data,[e.target.name]:e.target.value})
+const RegisterForm = () => {
+  const [data, setData] = useState({})
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
   }
-  const handleSubmit=()=>{
-    const {name,email,password} =data 
+  const handleSubmit = () => {
+    const { email, password } = data
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        message.success("You Are Registered Successfully")
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        message.error("Some thing went wrong while Creating Account")
+        // ..
+      });
   }
 
   const onFinish = (values) => {
@@ -28,7 +41,6 @@ const RegisterForm = () => {
           name="basic"
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
           className="form"
         >
           <h2>Register</h2>
@@ -37,7 +49,7 @@ const RegisterForm = () => {
             rules={[{ required: true, message: 'Please Enter your Name!' }]}
           >
             <Input
-              name='Name'
+              name='userName'
               value={data.name}
               size="large"
               placeholder="Enter Your Full Name"
@@ -66,17 +78,17 @@ const RegisterForm = () => {
             rules={[{ required: true, message: 'Please Enter your password!' }]}
           >
             <Input.Password
-            name='password'
-            value={data.password}
+              name='password'
+              value={data.password}
               size="large"
               placeholder="Password"
               prefix={<FontAwesomeIcon icon={faLock} className='me-1' />}
               onChange={handleChange}
             />
           </Form.Item>
-          <p>If You don't have na account then Register</p>
+          <p>If You have already Registered then <span className='text-primary'>Login</span></p>
 
-          <div className="w-25 m-auto loginButton btn btn-light" onClick={handleSubmit} >
+          <div className=" m-auto loginButton btn btn-light" onClick={handleSubmit} >
             Register
           </div>
         </Form>

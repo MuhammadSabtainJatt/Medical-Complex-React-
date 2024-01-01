@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-const initialData={email:"" , password:""}
+import { auth } from '../../../Config/config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 const LoginForm = () => {
-  const [data,setData]=useState(initialData)
+  const [data, setData] = useState({})
 
-  const handleChange=(e)=>{
-    setData({...data,[e.target.name]:e.target.value})
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
   }
-  const handleSubmit=()=>{
-    const {email,password} =data
-
-
-
-    
+  const handleSubmit = () => {
+    const { email, password } = data
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      message.success("You are Logined Successfully")
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      message.error("Something went wrong while Login")
+    });
   }
 
   const onFinish = (values) => {
@@ -56,16 +64,16 @@ const LoginForm = () => {
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
             <Input.Password
-            name='password'
-            value={data.password}
+              name='password'
+              value={data.password}
               size="large"
               placeholder="Password"
               prefix={<FontAwesomeIcon icon={faLock} />}
               onChange={handleChange}
             />
           </Form.Item>
-
-          <div className="w-25 m-auto loginButton btn btn-light" onClick={handleSubmit} >
+          <p>If you don't have an account then <span className="text-primary">Register</span></p>
+          <div className=" m-auto loginButton btn btn-light" onClick={handleSubmit} >
             Login
           </div>
         </Form>
