@@ -5,6 +5,7 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../../../Config/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthContext } from '../../../AuthContext/authContext';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const { readUserProfile } = useAuthContext;
@@ -73,7 +74,7 @@ const LoginForm = () => {
               onChange={handleChange}
             />
           </Form.Item>
-          <p>If you don't have an account then <span className="text-primary">Register</span></p>
+          <p>If you don't have an account then <Link style={{textDecoration:"none"}} to="/auth/register"><span className='text-primary'>Register</span></Link></p>
           <div className=" m-auto loginButton btn btn-light" onClick={handleSubmit} >
             Login
           </div>

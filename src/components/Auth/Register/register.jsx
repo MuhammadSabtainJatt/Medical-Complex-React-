@@ -6,6 +6,7 @@ import { auth, firestore } from '../../../Config/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { useAuthContext } from '../../../AuthContext/authContext';
+import { Link } from 'react-router-dom';
 
 const RegisterForm = () => {
   const { dispatch } = useAuthContext();
@@ -114,7 +115,7 @@ console.log(user)
               onChange={handleChange}
             />
           </Form.Item>
-          <p>If You have already Registered then <span className='text-primary'>Login</span></p>
+          <p>If You have already Registered then <Link style={{textDecoration:"none"}} to="/auth/login"><span className='text-primary'>Login</span></Link></p>
 
           <div className=" m-auto loginButton btn btn-light" onClick={handleSubmit} >
             Register
