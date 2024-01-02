@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../../../Config/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useAuthContext } from '../../../AuthContext/authContext';
 
 const LoginForm = () => {
+  const { readUserProfile } = useAuthContext;
   const [data, setData] = useState({})
 
   const handleChange = (e) => {
@@ -14,15 +16,14 @@ const LoginForm = () => {
   const handleSubmit = () => {
     const { email, password } = data
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      message.success("You are Logined Successfully")
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      message.error("Something went wrong while Login")
-    });
+      .then((userCredential) => {
+        const user = userCredential.user;
+        readUserProfile(user)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   }
 
   const onFinish = (values) => {
