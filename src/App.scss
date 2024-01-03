@@ -1,2 +1,10 @@
 @import "./scss/bootstrap";
 @import './scss/login';
+@import './scss/home';
+
+
+#root{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
