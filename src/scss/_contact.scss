@@ -1,5 +1,5 @@
 .maincontact{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Times New Roman', Times, serif;
 }
 .image{
     background-image: url('../Asset/Image/bg-10.jpg');
@@ -35,4 +35,29 @@
         margin: 5px;
     }
 
+}
+.button{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius:0px ;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 15px;
+    background-color: gold;
+    width: 100px;
+    padding: 10px;
+    margin: auto;
+    cursor: pointer;
+    transition: 1s;
+}
+.button:hover{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius:15px ;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 0px;
+    background-color: rgb(142, 122, 9);
+    transition: 1s;
+    color: white;
+    font-weight: bolder;
+}
+.map{
+    min-height: 70vh;
 }
