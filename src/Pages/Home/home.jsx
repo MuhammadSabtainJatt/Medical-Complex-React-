@@ -27,25 +27,26 @@ export default function Home() {
     <div className="container my-3">
       <div className="row">
         <div className="col">
-          <div className="w3-content" style={{ maxWidth: "1200px" }}>
-            <img className="mySlides" src="https://www.medicalnewstoday.com/images/articles/291/291891/hospital-exterior.jpg" style={{ width: "100%" }} alt="Nature" />
-            <img className="mySlides" src="https://www.newshub.co.nz/home/new-zealand/2021/03/new-zealand-hospitals-in-crisis-after-biggest-months-on-record-doctors/_jcr_content/par/image.dynimg.full.q75.jpg/v1616654637463/GETTY_HOSPITAL_BED_CORRIDOR_1120.jpg" style={{ width: "100%", display: "none" }} alt="Snow" />
-            <img className="mySlides" src="https://wallpaperaccess.com/full/1282856.jpg" style={{ width: "100%", display: "none" }} alt="Mountains" />
-
-            <div className="w3-row-padding w3-section">
-              <div className="w3-col s4">
-                <img className="demo w3-opacity" src="https://www.medicalnewstoday.com/images/articles/291/291891/hospital-exterior.jpg"
-                  style={{ width: "100%" }} alt="Nature" onClick={() => currentDiv(1)} />
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://www.medicalnewstoday.com/images/articles/291/291891/hospital-exterior.jpg" height={550} class="d-block w-100" alt="..."/>
               </div>
-              <div className="w3-col s4">
-                <img className="demo w3-opacity" src="https://www.newshub.co.nz/home/new-zealand/2021/03/new-zealand-hospitals-in-crisis-after-biggest-months-on-record-doctors/_jcr_content/par/image.dynimg.full.q75.jpg/v1616654637463/GETTY_HOSPITAL_BED_CORRIDOR_1120.jpg"
-                  style={{ width: "100%", display: "none" }} alt="Snow" onClick={() => currentDiv(2)} />
+              <div class="carousel-item">
+                <img src="https://healingthebody.ca/wp-content/uploads/2014/10/Fotolia_87154587_Subscription_Monthly_XL.jpg" height={550} class="d-block w-100" alt="..."/>
               </div>
-              <div className="w3-col s4">
-                <img className="demo w3-opacity" src="https://wallpaperaccess.com/full/1282856.jpg"
-                  style={{ width: "100%", display: "none" }} alt="Mountains" onClick={() => currentDiv(3)} />
+              <div class="carousel-item">
+                <img src="https://www.signsnow.com/assets/live/0/1/1713/hospital-monument-sign-for-memorial-hospital.jpg" height={550} class="d-block w-100" alt="..."/>
               </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
       </div>

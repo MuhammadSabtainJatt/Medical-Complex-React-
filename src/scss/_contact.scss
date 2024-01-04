@@ -1,0 +1,38 @@
+.maincontact{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.image{
+    background-image: url('../Asset/Image/bg-10.jpg');
+    background-size: cover;
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.image{
+    h1{
+        font-weight: bolder;
+        text-decoration: overline;
+        color: white;
+    }
+}
+.form1{
+    input{
+        padding: 5px;
+        width: 100%;
+        height: 40px;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+    }
+    textarea{
+        padding: 5px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+}

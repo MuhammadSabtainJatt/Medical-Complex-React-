@@ -6,7 +6,7 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg navbar-light text-white bg-dark  rounded-0  px-5"
       >
       <Link class="navbar-brand" to="/">
-        <img src={image} width="50" height="50" class="d-inline-block align-top" alt="" />
+        <img src={image} width="200" height="50" class="d-inline-block align-top" alt="" />
       </Link>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
