@@ -89,7 +89,7 @@ export default function footer1() {
                         Our seasoned and skilled team of physicians and practical nurses will leave no chance for any disease to survive!
                     </p>
                     <div className="btn btn-warning my-4 ">
-                        Make an Apointment
+                        Make an Apointment 
                     </div>
                     </div>
 

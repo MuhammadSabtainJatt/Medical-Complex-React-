@@ -1,7 +1,33 @@
+import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const initialState={name:"",email:"",dob:"",phoneNo:"",message1:""}
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export default function Contact() {
+  const [state,setState] =useState(initialState)
+
+  const handleChange=(e)=>{
+    setState({...state,[e.target.name]:e.target.value})
+  }
+
+  const handleSubmit=()=>{
+    const {name,email,dob,phoneNo,message1}=state
+    
+    const dateOfBirth=new Date(dob)
+    const today=new Date()
+    if(name.length<3 || !phoneNo || message1.length<10){
+       return message.error("Please Enter all input feilds Correct")
+    }
+    if(emailRegex.test(email)){
+      return message.error("Enter Correct Email")
+    }
+    if(dateOfBirth>today){
+      return message.error("Please Enter Correct Date-of-Birth")
+    }
+
+    setState(initialState)
+  }
 
 
   return (
@@ -25,24 +51,24 @@ export default function Contact() {
           <div className="form1">
             <div className="row">
               <div className="col-12 col-md-6">
-                <input type="text" placeholder='Your Name' name='userName' className='shadow' />
+                <input type="text" placeholder='Your Name' name='name' value={state.name} className='shadow'onChange={handleChange}  />
               </div>
               <div className="col-12 col-md-6">
-                <input type="email" placeholder='Your Email' name='email' className='shadow' />
+                <input type="email" placeholder='Your Email' name='email' value={state.email} className='shadow' onChange={handleChange} />
               </div>
             </div>
             <div className="row">
               <div className="col-12 col-md-6">
-                <input type="date" placeholder='Your Date-of-Birth' className='shadow' name='dob' />
+                <input type="date" placeholder='Your Date-of-Birth' name='dob' value={state.dob} className='shadow' onChange={handleChange}  />
               </div>
               <div className="col-12 col-md-6">
-                <input type="text" placeholder='Your Contact Number' className='shadow' name='number' />
+                <input type="text" placeholder='Your Phone #' className='shadow' name='phoneNo' value={state.phoneNo}onChange={handleChange}  />
               </div>
             </div>
             <div className="row">
               <div className="col ">
-                <textarea name="message" id="" className='w-100 shadow ' placeholder="Enter Message" cols="30" rows="3"></textarea>
-                <div className="button ">Message</div>
+                <textarea name="message1" id="" className='w-100 shadow' value={state.message1} placeholder="Enter Message" cols="30" rows="3" onChange={handleChange} ></textarea>
+                <div className="button " onClick={handleSubmit}>Message</div>
               </div>
             </div>
           </div>
