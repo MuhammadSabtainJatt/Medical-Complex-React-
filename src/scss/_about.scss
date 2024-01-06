@@ -1,0 +1,53 @@
+.mainAbout {
+    font-family: 'Times New Roman', Times, serif;
+
+    .image {
+        background-image: url('../Asset/Image/bg-12.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        min-height: 40vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        h1 {
+            font-weight: bolder;
+            text-decoration: overline;
+            color: white;
+        }
+    }
+}
+
+.aboutClinic {
+    .text{
+        color: gray;
+        font-size: small;
+        text-align: justify;
+    }
+    .textWithLine {
+        position: relative;
+        display: inline-block;
+    }
+
+    .textWithLine {
+        display: flex;
+        align-items: center;
+      }
+      
+      .textWithLine::after {
+        content: '';
+        flex: 1;
+        height: 2px; /* Adjust the line thickness as needed */
+        background-color: gray; /* Adjust the line color as needed */
+        margin: 10px; /* Adjust the space between text and line as needed */
+      }
+}
+.counting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-height: 30vh;
+    
+}
