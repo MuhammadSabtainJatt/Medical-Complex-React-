@@ -51,3 +51,16 @@
     min-height: 30vh;
     
 }
+
+.navigation{
+    background-image: url('../Asset/Image/about-02-268x483.jpg');
+    min-height: 75vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.5s;
+}
+.navigation:hover{
+    transition: 0.5s;
+    min-height: 70vh;
+    opacity: 0.5;
+}
