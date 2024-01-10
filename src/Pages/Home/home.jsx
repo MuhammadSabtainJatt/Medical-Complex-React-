@@ -1,11 +1,50 @@
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
+import { firestore } from '../../Config/config';
+import { message } from 'antd';
 
-
+const InitialState={
+  departments: '',
+  phone: '',
+  email: '',
+}
 export default function Home() {
+  const [formData, setFormData] = useState(InitialState);
   const [slideIndex, setSlideIndex] = useState(1);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    const { departments,phone,email } = formData
+
+    const today = new Date()
+    if (!phone || !departments || !email ) {
+      return message.error("Please Enter all input feilds Correct")
+    }
+    const appointmentsData = {
+      email, phone, departments,
+      dateCreated: serverTimestamp(),
+      status: "active",
+    }
+    try {
+      const docRef = await addDoc(collection(firestore, "AppointmentsData"), appointmentsData);
+      message.success("Your Appointments is Submitted Successfully! ThankYou")
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      message.error("Something went wrong ")
+    }
+setFormData(InitialState)
+  }
+
 
   const currentDiv = (n) => {
     showDivs(setSlideIndex(n));
@@ -70,8 +109,8 @@ export default function Home() {
       {/* main container  */}
 
       <div className="row p-4">
-        <div className="col-12 col-md-6 p-3  ">
-          <Card>
+        <div className="col-12 col-lg-6 p-3  Cards ">
+          <Card  >
             <Card.Header style={{ background: 'linear-gradient(to right, #000, gray)' }}>
               <div className="d-flex align-items-center">
                 <div style={{ padding: '3px', color: "white", marginRight: '15px' }}>
@@ -102,7 +141,7 @@ export default function Home() {
                 </div>
                 <div className="col-12 col-md 6 text-center m-auto">
                   <p cl>View a timetable showing when our doctors are usually available.</p>
-                  <div className="btn p-2 text-white w-50" style={{ background: 'linear-gradient(to right, #000, gray)',border:"none" }}>
+                  <div className="btn p-2 text-white w-50" style={{ background: 'linear-gradient(to right, #000, gray)', border: "none" }}>
                     Show TimeTable
                   </div>
                 </div>
@@ -110,43 +149,68 @@ export default function Home() {
             </Card.Body>
           </Card>
         </div>
-        <div className="col-12 col-md-6 p-3  ">
-          <Card>
+        <div className="col-12 col-lg-6 p-3 Cards ">
+          <Card >
             <Card.Header style={{ background: 'linear-gradient(to right, #000, gray)' }}>
               <div className="d-flex align-items-center">
                 <div style={{ padding: '3px', color: "white", marginRight: '15px' }}>
                   <div className="h3"><FontAwesomeIcon icon={faCalendarDays} /></div>
                 </div>
-                <h5 className="mb-0 text-white">Doctor Timetable</h5>
+                <h5 className="mb-0 text-white">Make an Appointment</h5>
               </div>
             </Card.Header>
             <Card.Body>
-              <div className="row">
-                <div className="col-12 col-md 6">
-                  <table className="table">
-                    <tbody>
-                      <tr>
-                        <td style={{ borderBottom: '1px solid #dee2e6', padding: '10px', textAlign: 'start' }}>Weekdays</td>
-                        <td style={{ borderBottom: '1px solid #dee2e6', padding: '10px', textAlign: 'end' }}>8:00 – 20:00</td>
-                      </tr>
-                      <tr>
-                        <td style={{ borderBottom: '1px solid #dee2e6', padding: '10px', textAlign: 'start' }}>Saturday</td>
-                        <td style={{ borderBottom: '1px solid #dee2e6', padding: '10px', textAlign: 'end' }}>9:30 – 17:30</td>
-                      </tr>
-                      <tr>
-                        <td style={{ borderBottom: '1px solid #dee2e6', padding: '10px', textAlign: 'start' }}>Sunday</td>
-                        <td style={{ borderBottom: '1px solid #dee2e6', padding: '10px', textAlign: 'end' }}>9:30 – 15:00</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div className="col-12 col-md 6 text-center m-auto">
-                  <p cl>View a timetable showing when our doctors are usually available.</p>
-                  <div className="btn p-2 text-white w-50" style={{ background: 'linear-gradient(to right, #000, gray)',border:"none" }}>
-                    Show TimeTable
-                  </div>
-                </div>
-              </div>
+             <div className="row">
+        <div className="col-12 col-md-6 p-2">
+          <select
+            id="selectOption"
+            className='input shadow'
+            name='departments'
+            value={formData.departments}
+            onChange={handleChange}
+          >
+            <option value="">Select Departments</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Dentistry">Dentistry</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Pulmonology">Pulmonology</option>
+            <option value="Ophthalmology">Ophthalmology</option>
+            <option value="Diagnostics">Diagnostics</option>
+          </select>
+        </div>
+        <div className="col-12 col-md-6 p-2">
+          <input
+            type="text"
+            className='input shadow'
+            placeholder='Phone'
+            name='phone'
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 col-md-6 p-2">
+          <input
+            type="email"
+            className='input shadow'
+            placeholder='Email'
+            name='email'
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="col-12 col-md-6 p-2 text-center">
+          <div
+            className="btn input w-100 shadow"
+            style={{ background: 'linear-gradient(to right, #000, gray)', border: "none" }}
+            onClick={handleSubmit}
+          >
+            <p className=' my-2 text-white'>Add Appointment</p>
+          </div>
+        </div>
+      </div>
             </Card.Body>
           </Card>
         </div>
