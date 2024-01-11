@@ -114,3 +114,18 @@
     min-height: 50vh;
     
 }
+.custom-button {
+    background: linear-gradient(to right, #000, gray);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: 3s ;
+    width: 40%;
+}
+
+.custom-button:hover {
+    background: linear-gradient(to right, orangered, #000);;
+    transition: 3s ;
+  }
+  
