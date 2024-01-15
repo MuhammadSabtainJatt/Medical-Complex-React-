@@ -15,7 +15,7 @@ const Navigate=useNavigate()
         if(code.validationCode!="Admin@67"){
             return message.error("Your Validation code in wrong Please Enter correct Validation code")
         }else{
-            Navigate("/dashboard/main")
+            Navigate("/dashboard")
         }
     }
 

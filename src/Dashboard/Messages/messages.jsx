@@ -1,6 +1,5 @@
 import React from 'react'
-import DashHeader from '../DashHeader/header'
-export default function dashboard() {
+export default function messages() {
   return (
     <div className="container-fluid  " style={{ minHeight: "100vh", backgroundColor: "black", display: "flex", justifyContent: "center", alignContent: 'center', alignItems: 'center' }}>
       <div className="container">

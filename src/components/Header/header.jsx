@@ -37,7 +37,7 @@ export default function Header() {
         &nbsp;
         <Link to="/auth/register"><div className="btn text-warning f-bold p-0"> Register</div></Link>
         &nbsp;&nbsp;
-        <Link to='/dashboard'><div className=" btn py-0 px-1 btn-warning shadow f-bold">Dashboard</div></Link>
+        <Link to='/auth/validation'><div className=" btn py-0 px-1 btn-warning shadow f-bold">Dashboard</div></Link>
       </div>
     </nav>
   );

@@ -1,8 +1,7 @@
 import React from 'react'
-import Doctor from './doctor'
-
+import Messages from './messages'
 export default function index() {
   return (
-    <Doctor />
-  )
+    <Messages />
+    )
 }

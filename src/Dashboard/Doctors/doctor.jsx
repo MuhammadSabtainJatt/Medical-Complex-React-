@@ -16,7 +16,7 @@ export default function doctor() {
                             "Expert doctors, compassionate care. Your health, our priority. Trust us for exceptional well-being"
                             If you want an New Doctor then Click on button
                         </p>
-                        <Link to=''>
+                        <Link to='/dashboard/addDoctor'>
                         <div className="btn btn-warning w-50 p-2 mx-auto text-white">
                             Add New Doctor
                         </div></Link>
