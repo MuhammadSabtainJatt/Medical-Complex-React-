@@ -5,10 +5,11 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../../../Config/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthContext } from '../../../AuthContext/authContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-  const { readUserProfile } = useAuthContext;
+  const navigate=useNavigate()
+  const { readUserProfile } = useAuthContext();
   const [data, setData] = useState({})
 
   const handleChange = (e) => {
@@ -19,11 +20,15 @@ const LoginForm = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user)
         readUserProfile(user)
+        message.success("Login Successfully")
+        navigate('/')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        message.error("Login Not Successfull")
       });
   }
 

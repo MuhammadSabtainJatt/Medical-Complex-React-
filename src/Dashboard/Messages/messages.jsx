@@ -1,12 +1,33 @@
-import React from 'react'
-export default function messages() {
+import React, { useEffect, useState } from 'react'
+import { collection, getDocs, query } from 'firebase/firestore';
+import { firestore } from '../../Config/config';
+
+
+
+
+export default function Messages() {
+  const [messages, setMessages] = useState([])
+  useEffect(() => {
+    getData()
+  }, []);
+
+  const getData = async () => {
+    const q = query(collection(firestore, "UserFeedBack"));
+    const querySnapshot = await getDocs(q);
+    let array=[]
+    querySnapshot.forEach((doc) => {
+      const data=doc.data()
+      array.push(data)
+    });
+    setMessages(array)
+    console.log(messages)
+  }
   return (
-    <div className="container-fluid  " style={{ minHeight: "100vh", backgroundColor: "black", display: "flex", justifyContent: "center", alignContent: 'center', alignItems: 'center' }}>
+    <div className="container-fluid messages " style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignContent: 'center', alignItems: 'center' }}>
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1 className='text-center mb-2 text-warning'>This Page in underDevelopment</h1>
-            <h4 className='text-center mb-5 text-warning'>Please Contact the Development Team! <br /> ThankYou</h4>
+
           </div>
         </div>
       </div>
