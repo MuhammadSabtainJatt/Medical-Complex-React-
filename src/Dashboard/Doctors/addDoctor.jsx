@@ -8,6 +8,11 @@ export default function AddDoctor() {
           <h5 className="card-title">Add Doctor</h5>
           <form>
             <div className="form-group">
+              <div className="">
+                <input type="file" placeholder='Add Picture' className="" id="file" style={{width:'100px',height:"100px",border:"black",borderRadius:"50px",backgroundColor:"gray"}} />
+              </div>
+            </div>
+            <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input type="text" className="form-control" id="name" placeholder="Enter name" />
             </div>
@@ -26,13 +31,6 @@ export default function AddDoctor() {
             <div className="form-group">
               <label htmlFor="studyBoard">Study Board:</label>
               <input type="text" className="form-control" id="studyBoard" placeholder="Enter study board" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="file">Choose File:</label>
-              <div className="custom-file">
-                <input type="file" className="custom-file-input" id="file" />
-                <label className="custom-file-label" htmlFor="file">Select file</label>
-              </div>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>

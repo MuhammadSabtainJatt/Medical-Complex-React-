@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function header() {
     return (
-        <div className="container-fluid bg-dark">
+        <div className="container-fluid bg-light">
             <div className="container">
                 <div className="row">
                     <div className="col">
