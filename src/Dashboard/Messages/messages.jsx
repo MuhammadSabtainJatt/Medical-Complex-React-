@@ -7,8 +7,12 @@ import { Link } from 'react-router-dom';
 
 const { Text, Paragraph } = Typography;
 
-export default function Messages() {
+export default function Messages(item) {
+
+
   const [messages, setMessages] = useState([]);
+
+  const formattedDate = item.dateCreated ? new Date(item.dateCreated.seconds * 1000).toLocaleString() : '';
 
   useEffect(() => {
     getData();
@@ -54,17 +58,17 @@ export default function Messages() {
               dataSource={messages}
               renderItem={(item) => (
                 <List.Item>
-                  <Card className='shadow bg-light'>
-                    <List.Item.Meta
-                      avatar={<Avatar style={{ backgroundColor: "lightgray", color: "black", fontWeight: "bolder", verticalAlign: 'middle' }} size="large" >
-                        {item.name.charAt(0)}
-                      </Avatar>}
-                      title={<h5 strong>{item.name}</h5>}
-                      description={<Text type="secondary">{item.email}</Text>}
-                    />
-                    <Paragraph >{item.message1}</Paragraph>
-                  </Card>
-                </List.Item>
+                <Card className='shadow bg-light'>
+                  <List.Item.Meta
+                    avatar={<Avatar style={{ backgroundColor: "lightgray", color: "black", fontWeight: "bolder", verticalAlign: 'middle' }} size="large" >
+                      {item.name.charAt(0)}
+                    </Avatar>}
+                    title={<h5 strong>{item.name}</h5>}
+                    description={<Text type="secondary">{formattedDate}</Text>}
+                  />
+                  <Paragraph>{item.message1}</Paragraph>
+                </Card>
+              </List.Item>
               )}
             />
           </div>

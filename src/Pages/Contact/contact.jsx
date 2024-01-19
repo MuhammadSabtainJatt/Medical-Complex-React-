@@ -29,7 +29,7 @@ export default function Contact() {
     }
     const Data = {
       name, email, dob, phoneNo, message1,
-      dateCreated: serverTimestamp(),
+      dateCreated:new Date(),
       status: "active",
     }
     try {
