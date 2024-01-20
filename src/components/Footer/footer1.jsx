@@ -84,13 +84,15 @@ export default function footer1() {
 
                     </h5>
                     <hr /><div className="text-center">
-                        
-                    <p style={{ color: "gold", fontSize: "small" }} >
-                        Our seasoned and skilled team of physicians and practical nurses will leave no chance for any disease to survive!
-                    </p>
-                    <div className="btn btn-warning my-4 ">
-                        Make an Apointment 
-                    </div>
+
+                        <p style={{ color: "gold", fontSize: "small" }} >
+                            Our seasoned and skilled team of physicians and practical nurses will leave no chance for any disease to survive!
+                        </p>
+                        <Link to='/'>
+                            <div className="btn btn-warning my-4 ">
+                                Make an Apointment
+                            </div>
+                        </Link>
                     </div>
 
                 </div>
