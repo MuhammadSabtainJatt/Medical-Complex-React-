@@ -1,12 +1,20 @@
 import React from 'react'
 export default function departments() {
   return (
-    <div className="container-fluid  " style={{ minHeight: "100vh", backgroundColor: "black", display: "flex", justifyContent: "center", alignContent: 'center', alignItems: 'center' }}>
+    <div className="container-fluid">
       <div className="container">
         <div className="row">
-          <div className="col">
-            <h1 className='text-center mb-2 text-warning'>This Page in underDevelopment</h1>
-            <h4 className='text-center mb-5 text-warning'>Please Contact the Development Team! <br /> ThankYou</h4>
+          <div className="col-12 col-md-6 col-lg-3 p-3">
+jhasgdjgakj
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 p-3">
+skdufchsiduf
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 p-3">
+dskhfcslefi
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 p-3">
+dskhfcslefi
           </div>
         </div>
       </div>
