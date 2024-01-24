@@ -1,5 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { collection, query } from 'firebase/firestore';
+import { firestore } from '../../Config/config';
+
 export default function departments() {
+  
+
+  const [departments, setDepartments] = useState([]);
+
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const q = query(collection(firestore, 'Departments'));
+    const querySnapshot = await getDocs(q);
+    let array = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      array.push(data);
+    });
+    setMessages(array);
+  };
   return (
     <div className="container-fluid">
       <div className="container">
